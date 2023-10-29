@@ -138,4 +138,30 @@ router.put("/update-employee-info/:id", authenticateToken, async (req, res) => {
   }
 });
 
+router.get('/total-employee', authenticateToken, async (req, res) => {
+  try {
+    const totalEmployee = await EmployeeInfo.countDocuments({})
+    res.json(`Total number of employee is ${totalEmployee}`)
+  } catch (error) {
+    res.json("Something is wrong!");
+  }
+})
+
+router.get('/average-age', authenticateToken, async (req, res) => {
+  try {
+    const allEmployee = await EmployeeInfo.find({})
+    let averageAge = 0
+
+    if(allEmployee.length === 0) {
+      return res.json(`Average age is ${averageAge}`)
+    } else {
+      const totalAge = allEmployee.reduce((total, employee) => total + employee.age, 0)
+      averageAge = totalAge/allEmployee.length
+      res.json(`Average age is ${averageAge}`)
+    }
+  } catch (error) {
+    res.json("Something is wrong!");
+  }
+})
+
 module.exports = router;

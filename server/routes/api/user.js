@@ -9,7 +9,8 @@ const User = require("../../models/User");
 router.post(
     "/register",
     [
-      body("name", "Name is required!").notEmpty(),
+      body("firstName", "Name is required!").notEmpty(),
+      body("lastName", "Name is required!").notEmpty(),
       body("email", "Please enter valid email").notEmpty().isEmail(),
       body("password", "Password with Minimum 6 character!").isLength({ min: 6 }),
     ],
@@ -22,7 +23,8 @@ router.post(
         const salt = await bcrypt.genSalt(10);
         const password = await bcrypt.hash(req.body.password, salt);
         const userObj = {
-          name: req.body.name,
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
           email: req.body.email,
           password: password,
         };
@@ -106,12 +108,13 @@ router.post(
     const accessToken = jwt.sign(
       { email: user.email, id: user._id },
       process.env.JWT_SECRET,
-      { expiresIn: "2d" }
+      { expiresIn: "1m" }
     );
     const refreshToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "60d",
+      expiresIn: "1m",
     });
-    const userObj = user.toJSON();
+    const userObj = {};
+    userObj.user = user.toJSON()
     userObj["accessToken"] = accessToken;
     userObj["refreshToken"] = refreshToken;
     res.status(200).json(userObj);

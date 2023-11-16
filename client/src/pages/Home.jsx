@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 // import cookies from "js-cookie";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar.jsx";
 import SideNav from "../components/SideNav.jsx";
@@ -8,7 +8,7 @@ import authService from "../services/authService";
 
 const Home = () => {
   const navigate = useNavigate();
-  let show = false;
+  const [show, setShow] = useState(false)
 
   const gotoSignIn = () => {
     navigate("/signIn");
@@ -16,9 +16,10 @@ const Home = () => {
 
   useEffect(() => {
     if (!authService.isLogin()) {
+      setShow(false)
       gotoSignIn();
     } else {
-      show = true;
+      setShow(true)
     }
   }, []);
 

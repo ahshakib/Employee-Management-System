@@ -27,7 +27,7 @@ const authenticate = async ({ email, password }) => {
 }
 
 const isLogin = () => {
-    return!!cookies.get('refreshToken')
+    return cookies.get('refreshToken')
 }
 const logOut = () => {
     _clearCredentials()

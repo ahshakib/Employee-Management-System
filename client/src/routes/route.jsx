@@ -5,7 +5,7 @@ import DashBoard from "../pages/DashBoard.jsx";
 import Home from "../pages/Home.jsx";
 import Employees from "../pages/Employees.jsx";
 
-export function AppRoutes() {
+export default function AppRoutes() {
     const routes = createBrowserRouter([
         {
             path: "/",

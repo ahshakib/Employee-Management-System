@@ -1,7 +1,9 @@
+import EmployeeList from '../components/EmployeeList.jsx'
+
 const Employees = () => {
     return (
         <>
-            <h1>Employees</h1>
+            <EmployeeList/>
         </>
     )
 }

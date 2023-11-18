@@ -7,5 +7,6 @@ const registerUser = async ({ firstName, lastName, email, password }) => {
         console.log(error);
     }
 }
+
 const userService = {registerUser}
 export default userService;

@@ -33,14 +33,15 @@ router.post("/addemployeeinfo", authenticateToken, async (req, res) => {
 
 router.get("/getemployeeinfo", authenticateToken, async (req, res) => {
   try {
-    const employee = await EmployeeInfo.find({}).select("name age position");
+    const employee = await EmployeeInfo.find({}).select("id name age position");
     res.json(employee);
   } catch (error) {
     res.json(error);
   }
 });
 
-router.get("/getemployeeinfodetails", authenticateToken, async (req, res) => {
+// & DO authentication later
+router.get("/getallemployee", async (req, res) => { 
   try {
     const employees = await EmployeeInfo.find({});
     res.json(employees);

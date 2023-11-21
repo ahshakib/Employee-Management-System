@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useEffect, useState } from "react";
+import CloseIcon from '@mui/icons-material/Close';
 
 const StyledCard = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2007" : "#f5ffff",
@@ -129,6 +130,8 @@ const ShowDetailsDialog = (props) => {
                   resetModal();
                 }}
                 autoFocus
+                variant="contained"
+                startIcon={<CloseIcon/>}
               >
                 Close
               </Button>

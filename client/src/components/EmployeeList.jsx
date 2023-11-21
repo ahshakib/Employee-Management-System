@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import ShowDetailsModal from "./ShowDetailsModal";
+import EditModal from "./EditModal";
 
 // const rows = [
 //   { id: 1, name: "Snow", age: 35, position: "Software Engineer" },
@@ -46,7 +47,13 @@ export default function EmployeeList(props) {
       renderCell: (params) => {
         return (
           <Box sx={{ display: "flex", gap: "5px" }}>
-            <Button color="success" variant="outlined" startIcon={<Edit />}>
+            <Button color="success" variant="outlined" startIcon={<Edit />}
+            onClick={(e) => {
+              e.stopPropagation()
+              setOpenEditModal(() => true)
+              setSingleUser(() => params.row)
+            }}
+            >
               Edit
             </Button>
             <Button
@@ -89,6 +96,8 @@ export default function EmployeeList(props) {
 
   const [open, setOpen] = useState(false);
 
+  const [openEditModal, setOpenEditModal] = useState(false)
+
   const resetModal = () => {
     setSingleUser(() => ({
       id: 0,
@@ -109,6 +118,10 @@ export default function EmployeeList(props) {
     setChanges(() => !changes);
   };
 
+  const resetOpenEditModal = () => {
+    setOpenEditModal(() => false)
+  }
+
   useEffect(() => {
     setRows(props.rows);
   }, [props.rows]);
@@ -120,6 +133,12 @@ export default function EmployeeList(props) {
         data={singleUser}
         resetModal={resetModal}
         setChanges={resetChanges}
+      />
+      <EditModal 
+        openEdit={openEditModal}
+        dataEdit={singleUser}
+        setChanges={setChanges}
+        resetOpenEditModal={resetOpenEditModal}
       />
       <Box
         sx={{

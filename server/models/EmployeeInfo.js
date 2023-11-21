@@ -12,7 +12,6 @@ const EmployeeInfoSchema = mongoose.Schema({
   joiningDate: Date,
   salary: Number,
   skills: Array,
-  education: Array
 });
 
 module.exports = EmployeeInfo = mongoose.model("EmployeeInfo", EmployeeInfoSchema)

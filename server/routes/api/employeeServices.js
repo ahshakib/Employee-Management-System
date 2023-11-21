@@ -6,11 +6,9 @@ const EmployeeInfo = require("../../models/EmployeeInfo");
 
 router.post("/addemployeeinfo", authenticateToken, async (req, res) => {
   try {
-    const name = req.body.firstName + " " + req.body.lastName;
-
     const employeeInfoObj = {
       id: req.body.id,
-      name: name,
+      name: req.body.name,
       age: req.body.age,
       position: req.body.position,
       email: req.body.email,
@@ -20,7 +18,6 @@ router.post("/addemployeeinfo", authenticateToken, async (req, res) => {
       joiningDate: req.body.joiningDate,
       salary: req.body.salary,
       skills: req.body.skills,
-      education: req.body.education,
     };
     const employeeInfo = new EmployeeInfo(employeeInfoObj);
     await employeeInfo.save();
@@ -120,10 +117,10 @@ router.get(
   }
 );
 
-router.put("/update-employee-info/:id", authenticateToken, async (req, res) => {
+// & DO authentication later
+router.put("/update-employee-info/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    req.body.name = req.body.firstName + " " + req.body.lastName;
     const body = req.body;
 
     const employee = await EmployeeInfo.findByIdAndUpdate(id, body, {

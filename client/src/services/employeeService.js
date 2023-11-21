@@ -9,5 +9,21 @@ const getAllEmployee = async() => {
     }
 }
 
-const employeeService = {getAllEmployee}
+const editEmployee = async(id, employee) => {
+    try {
+        const updateEmployee = await Axios.put(`/employee/update-employee-info/${id}`, employee)
+
+        if(!updateEmployee) {
+            return { isError: true, message: "Employee data cannot be updated"}
+        } else {
+            return {message: "Employee data updated", employee: updateEmployee}
+        }
+
+
+    } catch (error) {
+        return { isError: true, message: "Something went wrong!!"}
+    }
+}
+
+const employeeService = {getAllEmployee, editEmployee}
 export default employeeService

@@ -80,8 +80,20 @@ const ShowDetailsDialog = (props) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
+        <DialogActions>
+              <Button
+                onClick={() => {
+                  resetModal();
+                }}
+                autoFocus
+                startIcon={<CloseIcon/>}
+              >
+                Close
+              </Button>
+            </DialogActions>
         <Box>
           <StyledCard>
+            
             <Box>
               <Divider>
                 <Typography variant="h4" component="h2">
@@ -124,18 +136,7 @@ const ShowDetailsDialog = (props) => {
                 Skills: {`${modalData.data.skills}`}
               </Typography>
             </DialogContent>
-            <DialogActions>
-              <Button
-                onClick={() => {
-                  resetModal();
-                }}
-                autoFocus
-                variant="contained"
-                startIcon={<CloseIcon/>}
-              >
-                Close
-              </Button>
-            </DialogActions>
+            
           </StyledCard>
         </Box>
       </Dialog>

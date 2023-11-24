@@ -25,5 +25,19 @@ const editEmployee = async(id, employee) => {
     }
 }
 
-const employeeService = {getAllEmployee, editEmployee}
+const addEmployee = async ({id,name,age,position,email,phone,address,department,salary,skills}) => {
+    try {
+        const employeeData = await Axios.post("/employee/addemployeeinfo", {id,name,age,position,email,phone,address,department,salary,skills});
+
+        if(employeeData) {
+            return {isError: false, message: "Employee data inserted Successfully!"}
+        } else {
+            return {isError: true, message: "Please try again!!"}
+        }
+    } catch (error) {
+        return {isError: true, message: "Please try again!!"}
+    }
+}
+
+const employeeService = {getAllEmployee, editEmployee, addEmployee}
 export default employeeService

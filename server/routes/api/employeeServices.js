@@ -4,7 +4,8 @@ const router = express.Router();
 const authenticateToken = require("../../middleware/auth");
 const EmployeeInfo = require("../../models/EmployeeInfo");
 
-router.post("/addemployeeinfo", authenticateToken, async (req, res) => {
+router.post("/addemployeeinfo", async (req, res) => {
+  // & DO authentication later
   try {
     const employeeInfoObj = {
       id: req.body.id,
@@ -37,7 +38,7 @@ router.get("/getemployeeinfo", authenticateToken, async (req, res) => {
   }
 });
 
-// & DO authentication later
+
 router.get("/getallemployee", async (req, res) => { 
   try {
     const employees = await EmployeeInfo.find({});

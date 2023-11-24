@@ -7,6 +7,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import ShowDetailsModal from "./ShowDetailsModal";
 import EditModal from "./EditModal";
+import AddEmployee from "./AddEmployee";
 
 // const rows = [
 //   { id: 1, name: "Snow", age: 35, position: "Software Engineer" },
@@ -98,6 +99,16 @@ export default function EmployeeList(props) {
 
   const [openEditModal, setOpenEditModal] = useState(false)
 
+  const [openAddBtn, setOpenAddBtn] = useState(false)
+
+  const handleClickOpen = () => {
+    setOpenAddBtn(true);
+  };
+
+  const handleClose = () => {
+    setOpenAddBtn(false);
+  };
+
   const resetModal = () => {
     setSingleUser(() => ({
       id: 0,
@@ -128,6 +139,11 @@ export default function EmployeeList(props) {
 
   return (
     <Box sx={{ height: 400, width: "100%" }}>
+      <AddEmployee
+      open={openAddBtn}
+      handleClose={handleClose}
+      />
+
       <ShowDetailsModal
         open={open}
         data={singleUser}
@@ -161,7 +177,7 @@ export default function EmployeeList(props) {
         >
           Employee List
         </Typography>
-        <Button variant="contained" color="secondary" startIcon={<Add />}>
+        <Button variant="contained" color="secondary" startIcon={<Add />} onClick={handleClickOpen}>
           Add Employee
         </Button>
       </Box>

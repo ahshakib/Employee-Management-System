@@ -47,7 +47,6 @@ export default function SignUp() {
   });
 
   const navigate = useNavigate();
-  let res;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -56,8 +55,8 @@ export default function SignUp() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      res = await userService.registerUser(formData);
-      if (formData) {
+      const res = await userService.registerUser(formData);
+      if (!res.isError) {
         (<Alert severity="success">
           <AlertTitle>Success</AlertTitle>
           User Registration — <strong>Successfull!</strong>

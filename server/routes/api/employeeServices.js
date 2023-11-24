@@ -50,7 +50,6 @@ router.get("/getallemployee", async (req, res) => {
 
 router.delete(
   "/deleteemployeeinfo/:id",
-  authenticateToken,
   async (req, res) => {
     try {
       const id = req.params.id;

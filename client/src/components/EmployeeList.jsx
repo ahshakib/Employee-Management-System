@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import ShowDetailsModal from "./ShowDetailsModal";
 import EditModal from "./EditModal";
 import AddEmployee from "./AddEmployee";
-
+import DeleteEmployee from "./DeleteEmployee";
 // const rows = [
 //   { id: 1, name: "Snow", age: 35, position: "Software Engineer" },
 //   { id: 2, name: "Lannister", age: 42, position: "Software Engineer" },
@@ -69,7 +69,13 @@ export default function EmployeeList(props) {
             >
               Details
             </Button>
-            <Button variant="outlined" color="error" startIcon={<DeleteIcon />}>
+            <Button variant="outlined" color="error" startIcon={<DeleteIcon />}
+            onClick={(e) => {
+              e.stopPropagation()
+              setOpenDltBtn(() => true)
+              setSingleUser(() => params.row)
+            }}
+            >
               Delete
             </Button>
           </Box>
@@ -100,6 +106,13 @@ export default function EmployeeList(props) {
   const [openEditModal, setOpenEditModal] = useState(false)
 
   const [openAddBtn, setOpenAddBtn] = useState(false)
+
+  const [openDltBtn, setOpenDltBtn] = useState(false)
+
+
+  const handleClickCloseDlt = () => {
+    setOpenDltBtn(false)
+  }
 
   const handleClickOpen = () => {
     setOpenAddBtn(true);
@@ -155,6 +168,11 @@ export default function EmployeeList(props) {
         dataEdit={singleUser}
         setChanges={setChanges}
         resetOpenEditModal={resetOpenEditModal}
+      />
+      <DeleteEmployee
+        open={openDltBtn}
+        handleClose={handleClickCloseDlt}
+        data={singleUser}
       />
       <Box
         sx={{

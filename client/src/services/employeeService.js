@@ -35,9 +35,22 @@ const addEmployee = async ({id,name,age,position,email,phone,address,department,
             return {isError: true, message: "Please try again!!"}
         }
     } catch (error) {
-        return {isError: true, message: "Please try again!!"}
+        return {isError: true, message: error.message}
     }
 }
 
-const employeeService = {getAllEmployee, editEmployee, addEmployee}
+const deleteEmployee = async(id) => {
+    try {
+        const deletedEmployee = await Axios.delete(`employee/deleteemployeeinfo/${id}`)
+        if(deletedEmployee) {
+            return {isError: false, message: "Employee data Deleted Successfully!"}
+        } else {
+            return {isError: true, message: "Please try again!!"}
+        }
+    } catch (error) {
+        return {isError: true, message: error.message}
+    }
+}
+
+const employeeService = {getAllEmployee, editEmployee, addEmployee, deleteEmployee}
 export default employeeService

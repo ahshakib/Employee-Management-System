@@ -1,5 +1,5 @@
+import cookies from 'js-cookie';
 import Axios from "../axios/index.js";
-import cookies from 'js-cookie'
 
 const _clearCredentials = () => delete Axios.defaults.headers.common['Authorization']
 const authenticate = async ({ email, password }) => {
@@ -11,6 +11,8 @@ const authenticate = async ({ email, password }) => {
             Axios.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken
             cookies.set('accessToken', accessToken)
             cookies.set('refreshToken', refreshToken)
+            cookies.set('user', JSON.stringify(user))
+            console.log(user)
             return { message: 'Successful login', user };
         } else {
             _clearCredentials()
@@ -33,6 +35,7 @@ const logOut = () => {
     _clearCredentials()
     cookies.remove('accessToken')
     cookies.remove('refreshToken')
+    cookies.remove('user')
 }
 
 const authService = {authenticate, isLogin, logOut}

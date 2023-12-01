@@ -1,3 +1,47 @@
 body {
-    background-color: aliceblue;
+    background-color: rgb(52, 7, 173);
+}
+
+.container {
+    width: 350px;
+    margin: 30px auto;
+    padding-bottom: 20px;
+    background-color: rgb(231, 13, 13);
+    border-radius: 5px;
+    box-shadow: inset 0 -3em 3em rgb(117 255 117 / 30%), 0px 0px 8px 1px #e1dfdf, 0.3em 0.3em 1em rgb(168 160 160 / 60%);
+}
+
+.up {
+    background-image: linear-gradient(#a6c6fe, #789cf8);
+    height: 125px;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-title {
+    font-style: italic;
+    font-family: serif;
+    font-weight: 300;
+    color: rgb(91, 91, 91);
+    font-size: large;
+}
+.profile-desc {
+    text-align: center;
+    font-weight: 300;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(53, 53, 53);
+}
+
+.down img {
+    height: 150px;
+    border-radius: 100px;
+    margin-top: -75px;
+    padding: 2px;
+    background-color: white;
 }

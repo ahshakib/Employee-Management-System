@@ -50,7 +50,7 @@ export default function SignIn() {
         try {
             const { message, user } = await authService.authenticate(formData);
             if (user) {
-                console.log(user)
+                //console.log(user)
                 alert("Login successful!")
                 navigate("/dashboard")
             }

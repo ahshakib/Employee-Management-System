@@ -151,7 +151,7 @@ export default function EmployeeList(props) {
   }, [props.rows]);
 
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box sx={{ width: "100%", bgcolor: '#ffffff' }}>
       <AddEmployee
       open={openAddBtn}
       handleClose={handleClose}
@@ -180,6 +180,8 @@ export default function EmployeeList(props) {
           justifyContent: "space-between",
           alignItems: "center",
           width: "100%",
+          bgcolor: '#37a4db',
+          padding: '20px'
         }}
       >
         <Typography
@@ -187,9 +189,8 @@ export default function EmployeeList(props) {
           variant="h5"
           component="div"
           sx={{
-            padding: "20px",
             fontWeight: "bold",
-            color: "darkcyan",
+            color: "#ffffff",
             fontFamily: "revert-layer",
           }}
         >

@@ -26,9 +26,9 @@ const Home = () => {
   return !show ? null : (
     <>
       <NavBar />
-      <Box sx={{ display: "flex", gap: "20px", marginTop: "60px" }}>
+      <Box sx={{ display: "flex", marginTop: "60px", height: '89.5vh' }}>
         <SideNav />
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Box component="main" sx={{ flexGrow: 1, p: 3, bgcolor: '#b3f5ee', width: '80vw' }}>
           <Outlet />
         </Box>
       </Box>

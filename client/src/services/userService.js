@@ -1,3 +1,4 @@
+import cookies from 'js-cookie';
 import Axios from "../axios/index.js";
 
 const registerUser = async ({ firstName, lastName, email, password }) => {
@@ -14,5 +15,11 @@ const registerUser = async ({ firstName, lastName, email, password }) => {
     }
 }
 
-const userService = {registerUser}
+const userProfile = () => {
+    const user = cookies.get('user')
+    console.log(user)
+    return JSON.parse(user)
+}
+
+const userService = {registerUser, userProfile}
 export default userService;

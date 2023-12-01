@@ -4,6 +4,7 @@ import SignUp from "../pages/SignUp.jsx";
 import DashBoard from "../pages/DashBoard.jsx";
 import Home from "../pages/Home.jsx";
 import Employees from "../pages/Employees.jsx";
+import Profile from "../pages/Profile.jsx";
 
 export default function AppRoutes() {
     const routes = createBrowserRouter([
@@ -18,6 +19,10 @@ export default function AppRoutes() {
                 {
                     path: "employees",
                     element: <Employees/>
+                },
+                {
+                    path: "profile",
+                    element: <Profile/>
                 }
             ]
         },

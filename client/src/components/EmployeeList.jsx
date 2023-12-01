@@ -180,7 +180,7 @@ export default function EmployeeList(props) {
           justifyContent: "space-between",
           alignItems: "center",
           width: "100%",
-          bgcolor: '#37a4db',
+          bgcolor: '#7236a3',
           padding: '20px'
         }}
       >
@@ -196,7 +196,7 @@ export default function EmployeeList(props) {
         >
           Employee List
         </Typography>
-        <Button variant="contained" color="secondary" startIcon={<Add />} onClick={handleClickOpen}>
+        <Button variant="contained" sx={{bgcolor:'#35184d'}} startIcon={<Add />} onClick={handleClickOpen}>
           Add Employee
         </Button>
       </Box>

@@ -28,7 +28,7 @@ const Home = () => {
       <NavBar />
       <Box sx={{ display: "flex", marginTop: "60px", height: '89.5vh' }}>
         <SideNav />
-        <Box component="main" sx={{ flexGrow: 1, p: 3, bgcolor: '#b3f5ee', width: '80vw' }}>
+        <Box component="main" sx={{ flexGrow: 1, p: 3, bgcolor: '#e7cffa', width: '80vw' }}>
           <Outlet />
         </Box>
       </Box>

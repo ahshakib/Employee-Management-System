@@ -76,14 +76,14 @@ export default function SideNav() {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <Drawer variant="permanent" open={open}>
+            <Drawer variant="permanent" open={open} >
                 <DrawerHeader>
                     <IconButton>
                         {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                <List>
+                <List sx={{ backgroundColor:"#8b48c2", color: 'white', height:'100vh', marginTop:'0'}}>
                     <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigate('/dashboard')}>
                         <ListItemButton
                             sx={{
@@ -97,6 +97,7 @@ export default function SideNav() {
                                     minWidth: 0,
                                     mr: open ? 3 : 'auto',
                                     justifyContent: 'center',
+                                    color: 'white'
                                 }}
                             >
                                 <Dashboard />
@@ -117,6 +118,7 @@ export default function SideNav() {
                                     minWidth: 0,
                                     mr: open ? 3 : 'auto',
                                     justifyContent: 'center',
+                                    color: 'white'
                                 }}
                             >
                                 <SupervisedUserCircle/>

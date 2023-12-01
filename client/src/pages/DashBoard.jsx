@@ -1,26 +1,23 @@
-import { Box, Card, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Box, Typography, Grid } from '@mui/material';
 import CardComponent from '../components/CardComponent';
-
-const StyledCard = styled(Card)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2007' : '#f5ffff',
-    margin: '15px',
-    [theme.breakpoints.down('md')]: {
-        margin: '5px',
-    },
-}));
+import PieChartComponent from '../components/PieChartComponent';
 
 const DashBoard = () => {
     return (
         <>
-            <StyledCard>
-                <Typography variant='h3' gutterBottom >
-                    Dashboard
-                </Typography>
-                <Box>
-                    <CardComponent breakpoint={5} spacing={2} margin={2} />
-                </Box>
-            </StyledCard>
+            <Typography variant='h3' gutterBottom sx={{margin:'25px', color:'purple'}} >
+                Dashboard
+            </Typography>
+            <Box width='100%'>
+                <Grid container width='100%' gap={10}>
+                    <Grid width='100%' xs={5.5}>
+                        <CardComponent margin={2} spacing={2} />
+                    </Grid>
+                    <Grid width='100%' xs={5.5}>
+                        <PieChartComponent />
+                    </Grid>
+                </Grid>
+            </Box>
         </>
     );
 };

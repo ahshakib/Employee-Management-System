@@ -83,7 +83,7 @@ export default function SideNav() {
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                <List sx={{ backgroundColor:"#8b48c2", color: 'white', height:'100vh', marginTop:'0'}}>
+                <List sx={{ backgroundColor:"#8b48c2", color: 'white', height:'100vh', marginTop:'-1px'}}>
                     <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigate('/dashboard')}>
                         <ListItemButton
                             sx={{

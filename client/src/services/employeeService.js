@@ -52,5 +52,32 @@ const deleteEmployee = async(id) => {
     }
 }
 
-const employeeService = {getAllEmployee, editEmployee, addEmployee, deleteEmployee}
+const cardEmployeeInfo = async() => {
+    try {
+        const total = await Axios.get('employee/employee-calc')
+        if(total) {
+            return total
+        } else {
+            return 0
+        }
+    } catch (error) {
+        return "Something went wrong"
+    }
+}
+
+const pieChartData = async() => {
+    try {
+        const data = await Axios.get('employee/chart-data')
+        if(data) {
+            return data
+        } else {
+            return null
+        }
+    } catch (error) {
+        return "Something went wrong"
+    }
+}
+
+
+const employeeService = {getAllEmployee, editEmployee, addEmployee, deleteEmployee, cardEmployeeInfo, pieChartData}
 export default employeeService

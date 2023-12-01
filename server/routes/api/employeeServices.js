@@ -136,27 +136,36 @@ router.put("/update-employee-info/:id", async (req, res) => {
   }
 });
 
-router.get('/total-employee', authenticateToken, async (req, res) => {
+router.get('/employee-calc', async (req, res) => {
+  // & DO authentication later
   try {
-    const totalEmployee = await EmployeeInfo.countDocuments({})
-    res.json(`Total number of employee is ${totalEmployee}`)
+    const aggregate = [];
+        aggregate.push({
+            $group: {
+                _id: null,
+                totalEmployee: { $sum: 1 },
+                averageAge: { $avg: "$age" },
+                averageSalary: { $avg: "$salary" },
+            }
+        });
+        const result = await EmployeeInfo.aggregate(aggregate);
+        res.status(200).json({ result: result[0] });
   } catch (error) {
     res.json("Something is wrong!");
   }
 })
 
-router.get('/average-age', authenticateToken, async (req, res) => {
+router.get('/chart-data', async (req, res) => {
   try {
-    const allEmployee = await EmployeeInfo.find({})
-    let averageAge = 0
-
-    if(allEmployee.length === 0) {
-      return res.json(`Average age is ${averageAge}`)
-    } else {
-      const totalAge = allEmployee.reduce((total, employee) => total + employee.age, 0)
-      averageAge = totalAge/allEmployee.length
-      res.json(`Average age is ${averageAge}`)
-    }
+    const aggregate = []
+    aggregate.push({
+      $group: {
+        _id: '$department',
+        employeeNumber: {$sum: 1}
+      }
+    })
+    const result = await EmployeeInfo.aggregate(aggregate);
+    res.status(200).json({ result });
   } catch (error) {
     res.json("Something is wrong!");
   }
